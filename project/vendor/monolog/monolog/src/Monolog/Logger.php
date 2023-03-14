@@ -13,6 +13,7 @@ namespace Monolog;
 
 use Closure;
 use DateTimeZone;
+use Fiber;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Processor\ProcessorInterface;
 use Psr\Log\LoggerInterface;
@@ -20,6 +21,7 @@ use Psr\Log\InvalidArgumentException;
 use Psr\Log\LogLevel;
 use Throwable;
 use Stringable;
+use WeakMap;
 
 /**
  * Monolog log channel
@@ -28,6 +30,7 @@ use Stringable;
  * and uses them to store records that are added to it.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+ * @final
  */
 class Logger implements LoggerInterface, ResettableInterface
 {
@@ -105,6 +108,22 @@ class Logger implements LoggerInterface, ResettableInterface
      */
     public const API = 3;
 
+    /**
+     * Mapping between levels numbers defined in RFC 5424 and Monolog ones
+     *
+     * @phpstan-var array<int, Level> $rfc_5424_levels
+     */
+    private const RFC_5424_LEVELS = [
+        7 => Level::Debug,
+        6 => Level::Info,
+        5 => Level::Notice,
+        4 => Level::Warning,
+        3 => Level::Error,
+        2 => Level::Critical,
+        1 => Level::Alert,
+        0 => Level::Emergency,
+    ];
+
     protected string $name;
 
     /**
@@ -135,8 +154,12 @@ class Logger implements LoggerInterface, ResettableInterface
     private int $logDepth = 0;
 
     /**
+     * @var WeakMap<Fiber<mixed, mixed, mixed, mixed>, int> Keeps track of depth inside fibers to prevent infinite logging loops
+     */
+    private WeakMap $fiberLogDepth;
+
+    /**
      * Whether to detect infinite logging loops
-     *
      * This can be disabled via {@see useLoggingLoopDetection} if you have async handlers that do not play well with this
      */
     private bool $detectCycles = true;
@@ -155,6 +178,7 @@ class Logger implements LoggerInterface, ResettableInterface
         $this->setHandlers($handlers);
         $this->processors = $processors;
         $this->timezone = $timezone ?? new DateTimeZone(date_default_timezone_get());
+        $this->fiberLogDepth = new \WeakMap();
     }
 
     public function getName(): string
@@ -286,7 +310,7 @@ class Logger implements LoggerInterface, ResettableInterface
     /**
      * Adds a log record.
      *
-     * @param  int               $level    The logging level
+     * @param  int               $level    The logging level (a Monolog or RFC 5424 level)
      * @param  string            $message  The log message
      * @param  mixed[]           $context  The log context
      * @param  DateTimeImmutable $datetime Optional log date to log into the past or future
@@ -296,13 +320,24 @@ class Logger implements LoggerInterface, ResettableInterface
      */
     public function addRecord(int|Level $level, string $message, array $context = [], DateTimeImmutable $datetime = null): bool
     {
-        if ($this->detectCycles) {
-            $this->logDepth += 1;
+        if (is_int($level) && isset(self::RFC_5424_LEVELS[$level])) {
+            $level = self::RFC_5424_LEVELS[$level];
         }
-        if ($this->logDepth === 3) {
+
+        if ($this->detectCycles) {
+            if (null !== ($fiber = Fiber::getCurrent())) {
+                $logDepth = $this->fiberLogDepth[$fiber] = ($this->fiberLogDepth[$fiber] ?? 0) + 1;
+            } else {
+                $logDepth = ++$this->logDepth;
+            }
+        } else {
+            $logDepth = 0;
+        }
+
+        if ($logDepth === 3) {
             $this->warning('A possible infinite logging loop was detected and aborted. It appears some of your handler code is triggering logging, see the previous log record for a hint as to what may be the cause.');
             return false;
-        } elseif ($this->logDepth >= 5) { // log depth 4 is let through so we can log the warning above
+        } elseif ($logDepth >= 5) { // log depth 4 is let through, so we can log the warning above
             return false;
         }
 
@@ -354,7 +389,11 @@ class Logger implements LoggerInterface, ResettableInterface
             return $handled;
         } finally {
             if ($this->detectCycles) {
-                $this->logDepth--;
+                if (isset($fiber)) {
+                    $this->fiberLogDepth[$fiber]--;
+                } else {
+                    $this->logDepth--;
+                }
             }
         }
     }
@@ -505,7 +544,7 @@ class Logger implements LoggerInterface, ResettableInterface
      *
      * This method allows for compatibility with common interfaces.
      *
-     * @param mixed             $level   The log level
+     * @param mixed             $level   The log level (a Monolog, PSR-3 or RFC 5424 level)
      * @param string|Stringable $message The log message
      * @param mixed[]           $context The log context
      *
@@ -513,11 +552,17 @@ class Logger implements LoggerInterface, ResettableInterface
      */
     public function log($level, string|\Stringable $message, array $context = []): void
     {
-        if (!is_string($level) && !is_int($level) && !$level instanceof Level) {
-            throw new \InvalidArgumentException('$level is expected to be a string, int or '.Level::class.' instance');
-        }
+        if (!$level instanceof Level) {
+            if (!is_string($level) && !is_int($level)) {
+                throw new \InvalidArgumentException('$level is expected to be a string, int or '.Level::class.' instance');
+            }
 
-        $level = static::toMonologLevel($level);
+            if (isset(self::RFC_5424_LEVELS[$level])) {
+                $level = self::RFC_5424_LEVELS[$level];
+            }
+
+            $level = static::toMonologLevel($level);
+        }
 
         $this->addRecord($level, (string) $message, $context);
     }
@@ -655,5 +700,36 @@ class Logger implements LoggerInterface, ResettableInterface
         }
 
         ($this->exceptionHandler)($e, $record);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function __serialize(): array
+    {
+        return [
+            'name' => $this->name,
+            'handlers' => $this->handlers,
+            'processors' => $this->processors,
+            'microsecondTimestamps' => $this->microsecondTimestamps,
+            'timezone' => $this->timezone,
+            'exceptionHandler' => $this->exceptionHandler,
+            'logDepth' => $this->logDepth,
+            'detectCycles' => $this->detectCycles,
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     */
+    public function __unserialize(array $data): void
+    {
+        foreach (['name', 'handlers', 'processors', 'microsecondTimestamps', 'timezone', 'exceptionHandler', 'logDepth', 'detectCycles'] as $property) {
+            if (isset($data[$property])) {
+                $this->$property = $data[$property];
+            }
+        }
+
+        $this->fiberLogDepth = new \WeakMap();
     }
 }

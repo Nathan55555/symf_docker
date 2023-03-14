@@ -204,10 +204,40 @@ class Configuration
     }
 
     /**
+     * @param array<string,DeprecationGroup> $deprecationGroups
+     *
+     * @return bool true if the threshold is not reached for the deprecation type nor for the total
+     */
+    public function toleratesForGroup(string $groupName, array $deprecationGroups): bool
+    {
+        $grandTotal = 0;
+
+        foreach ($deprecationGroups as $type => $group) {
+            if ('legacy' !== $type) {
+                $grandTotal += $group->count();
+            }
+        }
+
+        if ($grandTotal > $this->thresholds['total']) {
+            return false;
+        }
+
+        if (\in_array($groupName, ['self', 'direct', 'indirect'], true) && $deprecationGroups[$groupName]->count() > $this->thresholds[$groupName]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * @return bool
      */
     public function isBaselineDeprecation(Deprecation $deprecation)
     {
+        if ($deprecation->isLegacy()) {
+            return false;
+        }
+
         if ($deprecation->originatesFromAnObject()) {
             $location = $deprecation->originatingClass().'::'.$deprecation->originatingMethod();
         } else {

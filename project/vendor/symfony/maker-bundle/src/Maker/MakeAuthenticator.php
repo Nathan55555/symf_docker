@@ -65,19 +65,13 @@ final class MakeAuthenticator extends AbstractMaker
     private const AUTH_TYPE_EMPTY_AUTHENTICATOR = 'empty-authenticator';
     private const AUTH_TYPE_FORM_LOGIN = 'form-login';
 
-    private $fileManager;
-    private $configUpdater;
-    private $generator;
-    private $doctrineHelper;
-    private $securityControllerBuilder;
-
-    public function __construct(FileManager $fileManager, SecurityConfigUpdater $configUpdater, Generator $generator, DoctrineHelper $doctrineHelper, SecurityControllerBuilder $securityControllerBuilder)
-    {
-        $this->fileManager = $fileManager;
-        $this->configUpdater = $configUpdater;
-        $this->generator = $generator;
-        $this->doctrineHelper = $doctrineHelper;
-        $this->securityControllerBuilder = $securityControllerBuilder;
+    public function __construct(
+        private FileManager $fileManager,
+        private SecurityConfigUpdater $configUpdater,
+        private Generator $generator,
+        private DoctrineHelper $doctrineHelper,
+        private SecurityControllerBuilder $securityControllerBuilder,
+    ) {
     }
 
     public static function getCommandName(): string
@@ -224,7 +218,7 @@ final class MakeAuthenticator extends AbstractMaker
             );
             $generator->dumpFile($path, $newYaml);
             $securityYamlUpdated = true;
-        } catch (YamlManipulationFailedException $e) {
+        } catch (YamlManipulationFailedException) {
         }
 
         if (self::AUTH_TYPE_FORM_LOGIN === $input->getArgument('authenticator-type')) {
@@ -339,7 +333,10 @@ final class MakeAuthenticator extends AbstractMaker
             throw new RuntimeCommandException(sprintf('Method "login" already exists on class %s', $controllerClassNameDetails->getFullName()));
         }
 
-        $manipulator = new ClassSourceManipulator($controllerSourceCode, true);
+        $manipulator = new ClassSourceManipulator(
+            sourceCode: $controllerSourceCode,
+            overwrite: true
+        );
 
         $this->securityControllerBuilder->addLoginMethod($manipulator);
 
