@@ -2,7 +2,7 @@
 Create project:
 <ul>
   <li>docker exec www_docker_symfony composer create-project symfony/website-skeleton project</li>
-  <li></li>
+  <li>sudo chown -R $USER ./</li>
 </ul>
 <p>change file .env :</p>
 <ul>
