@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
+class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -103,6 +103,7 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'SpotifyWebAPI\\' => 14,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
         'P' => 
@@ -142,6 +143,10 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
+        ),
+        'C' => 
+        array (
+            'Calliostro\\SpotifyWebApiBundle\\' => 31,
         ),
         'A' => 
         array (
@@ -433,6 +438,10 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
+        'SpotifyWebAPI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src',
+        ),
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src',
@@ -542,6 +551,10 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Calliostro\\SpotifyWebApiBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src',
+        ),
         'App\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -554,6 +567,12 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
 
     public static $classMap = array (
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'Calliostro\\SpotifyWebApiBundle\\CalliostroSpotifyWebApiBundle' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/CalliostroSpotifyWebApiBundle.php',
+        'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\CalliostroSpotifyWebApiExtension' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/CalliostroSpotifyWebApiExtension.php',
+        'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/Configuration.php',
+        'Calliostro\\SpotifyWebApiBundle\\SpotifyWebApiFactory' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/SpotifyWebApiFactory.php',
+        'Calliostro\\SpotifyWebApiBundle\\TokenProvider' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/TokenProvider.php',
+        'Calliostro\\SpotifyWebApiBundle\\TokenProviderInterface' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/TokenProviderInterface.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -2960,6 +2979,11 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
         'Sensio\\Bundle\\FrameworkExtraBundle\\Security\\ExpressionLanguage' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Security/ExpressionLanguage.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/SensioFrameworkExtraBundle.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\Templating\\TemplateGuesser' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Templating/TemplateGuesser.php',
+        'SpotifyWebAPI\\Request' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/Request.php',
+        'SpotifyWebAPI\\Session' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/Session.php',
+        'SpotifyWebAPI\\SpotifyWebAPI' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPI.php',
+        'SpotifyWebAPI\\SpotifyWebAPIAuthException' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPIAuthException.php',
+        'SpotifyWebAPI\\SpotifyWebAPIException' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPIException.php',
         'Symfony\\Bridge\\Doctrine\\CacheWarmer\\ProxyCacheWarmer' => __DIR__ . '/..' . '/symfony/doctrine-bridge/CacheWarmer/ProxyCacheWarmer.php',
         'Symfony\\Bridge\\Doctrine\\ContainerAwareEventManager' => __DIR__ . '/..' . '/symfony/doctrine-bridge/ContainerAwareEventManager.php',
         'Symfony\\Bridge\\Doctrine\\DataCollector\\DoctrineDataCollector' => __DIR__ . '/..' . '/symfony/doctrine-bridge/DataCollector/DoctrineDataCollector.php',
@@ -6190,9 +6214,9 @@ class ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita8a178ae8dcf6b1c29c5fc64a5765620::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit37a875388005ee7b9fc98da84f7a3243::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit37a875388005ee7b9fc98da84f7a3243::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit37a875388005ee7b9fc98da84f7a3243::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,0 +1,85 @@
+<!-- form.html.twig -->
+{% block body %}
+ {{ form_start(form) }}
+    <div class="form-group">
+       {{ form_widget(form.search, {'attr': {'class': 'form-control','placeholder':'Entrez le titre de la musique'}}) }}
+     
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+  {{ form_end(form) }}
+</div>    
+<style>/* Style général */
+body {
+  background-color: #1f1f1f;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Style du formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #5c5cff;
+}
+
+.form-group input:focus ~ label,
+.form-group input:valid ~ label {
+  top: 10px;
+  font-size: 14px;
+  color: #5c5cff;
+}
+
+button[type="submit"] {
+  border: none;
+  background-color: #5c5cff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #3c3ccf;
+}
+</style> 
+{% endblock %}

@@ -3,18 +3,135 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<style>/* Style général */
+body {
+background-color: #1f1f1f;
+font-family: Arial, sans-serif;
+color: #fff;
+}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+.container {
+max-width: 1200px;
+margin: 0 auto;
+}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/project/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/project/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+/* Style des blocs de cartes */
+.row {
+display: flex;
+flex-wrap: wrap;
+margin: 0 -15px;
+}
+
+.col-md-4 {
+width: calc(33.33% - 30px);
+padding: 0 15px;
+margin-bottom: 30px;
+position: relative;
+}
+
+.card {
+border: none;
+background-color: #1f1f1f;
+color: #fff;
+}
+
+.card-img-top {
+width: 100%;
+}
+
+.card-body {
+padding: 20px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.card-title {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.card-text {
+font-size: 16px;
+margin-bottom: 0;
+}
+
+/* Style des boutons play et pause */
+.play-button, .pause-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  font-size: 40px;
+  color: #fff;
+  display: none;
+}
+
+/* Afficher le bouton play */
+.card:hover .play-button {
+  display: block;
+}
+
+/* Cacher la barre audio */
+audio {
+  display: none;
+}
+
+/* Afficher le bouton pause */
+audio.playing + .pause-button {
+  display: block;
+}
+
+@media (max-width: 767px) {
+.col-md-4 {
+width: 100%;
+}
+}</style>
+<div class="container">
+  <div class="row">
+    {% for name, artist in names %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{ artist['image'] }}" class="card-img-top" alt="">
+          <div class="card-body">
+            <figure>
+              <figcaption>{{ name }}</figcaption>
+              <button class="play-button" onclick="playMusic('{{ name }}', this)">&#9658;</button>
+              <button class="pause-button" onclick="pauseMusic('{{ name }}', this)">&#10074;&#10074;</button>
+              <audio id="{{ name }}" src="{{ artist.song }}" onended="resetMusic(this)"></audio>
+            </figure>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
+<script>
+function playMusic(id, button) {
+  var audio = document.getElementById(id);
+  audio.play();
+  audio.classList.add('playing');
+  button.style.display = 'none';
+  button.nextElementSibling.style.display = 'block';
+}
+
+function pauseMusic(id, button) {
+  var audio = document.getElementById(id);
+  audio.pause();
+  audio.classList.remove('playing');
+  button.style.display = 'none';
+  button.previousElementSibling.style.display = 'block';
+}
+
+function resetMusic(audio) {
+  audio.classList.remove('playing');
+  audio.previousElementSibling.style.display = 'block';
+  audio.nextElementSibling.style.display = 'none';
+}
+</script>
 {% endblock %}
