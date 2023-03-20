@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col">
+        {{ form_label(form.Name) }}
+        {{ form_widget(form.Name) }}
+    </div>
+    <div class="col">
+        {{ form_label(form.Prenom) }}
+        {{ form_widget(form.Prenom) }}
+    </div>
+</div>
+<div class="row">
+<div class="col">
+{{ form_label(form.email) }}
+{{ form_widget(form.email) }}
+</div>
+<div class="col">
+{{ form_label(form.password) }}
+{{ form_widget(form.password) }}
+</div>
+</div>
+<div class="row">
+<div class="col">
+  {{ form_label(form.username) }}
+ {{ form_widget(form.username) }}
+</div>
+<div class="col">
+<select class="form-select" aria-label="Default select example">
+  <option value="1">{{ form_widget(form.roles) }}</option>
+</select>
+  
+
+</div>
+</div>
+
+  
+    
+  
+  
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -8,9 +8,12 @@ use Symfony\Component\HttpFoundation\Request;;
 use Symfony\Component\Routing\Annotation\Route;
 use SpotifyWebAPI\SpotifyWebAPI;
 use App\Form\TitreType;
+#[Route('/profile', name: 'app_profile')]
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+
+    
+    #[Route('/', name: 'app_home')]
     public function index(SpotifyWebAPI $api,Request $request): Response
     {
         $form = $this->createForm(TitreType::class);

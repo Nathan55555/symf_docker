@@ -566,6 +566,8 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
     );
 
     public static $classMap = array (
+        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
+        'App\\Form\\TitreType' => __DIR__ . '/../..' . '/src/Form/TitreType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'Calliostro\\SpotifyWebApiBundle\\CalliostroSpotifyWebApiBundle' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/CalliostroSpotifyWebApiBundle.php',
         'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\CalliostroSpotifyWebApiExtension' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/CalliostroSpotifyWebApiExtension.php',

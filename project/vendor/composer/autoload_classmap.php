@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\HomeController' => $baseDir . '/src/Controller/HomeController.php',
+    'App\\Form\\TitreType' => $baseDir . '/src/Form/TitreType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'Calliostro\\SpotifyWebApiBundle\\CalliostroSpotifyWebApiBundle' => $vendorDir . '/calliostro/spotify-web-api-bundle/src/CalliostroSpotifyWebApiBundle.php',
     'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\CalliostroSpotifyWebApiExtension' => $vendorDir . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/CalliostroSpotifyWebApiExtension.php',
