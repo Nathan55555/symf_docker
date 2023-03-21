@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 class UsersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -19,10 +22,10 @@ class UsersType extends AbstractType
             ->add('roles',ChoiceType::class, [
                 'multiple' => true,
                 'choices'  => [
-                    'Option1' => 'ROLE_USER',
-                    'Option2' => 'ROLE_ADMIN'
+                    'ROLE_USER' => 'ROLE_USER',
+                    'ROLE_ADMIN' => 'ROLE_ADMIN'
                 ] ])
-            ->add('password')
+             ->add('password')
             ->add('username')
             ->add('Name')   
             ->add('Prenom')

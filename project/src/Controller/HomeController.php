@@ -8,14 +8,19 @@ use Symfony\Component\HttpFoundation\Request;;
 use Symfony\Component\Routing\Annotation\Route;
 use SpotifyWebAPI\SpotifyWebAPI;
 use App\Form\TitreType;
-#[Route('/profile', name: 'app_profile')]
+
 class HomeController extends AbstractController
 {
 
+
     
-    #[Route('/', name: 'app_home')]
+    #[Route('/profile', name: 'app_home')]
     public function index(SpotifyWebAPI $api,Request $request): Response
     {
+        // $art = $api->search('gazo','artist');
+        // $idart = ($art->artists->items[0]->id);
+        // $art = $api->getArtist($idart);
+        // dd($art);
         $form = $this->createForm(TitreType::class);
         
         // Traitez le formulaire si une demande est soumise
@@ -48,7 +53,8 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'names' => $names,
-            'musiques_count' => count($names)
+            'musiques_count' => count($names),
+            'form' => $form->createView(),
         ]);
             // Faites quelque chose avec la valeur du champ de recherche (par exemple, recherchez dans une base de données)
         }

@@ -5,6 +5,18 @@
 {% block body %}
 
 <div class="container">
+<div class="container">
+
+ {{ form_start(form) }}
+    <div class="form-group">
+
+       {{ form_widget(form.search, {'attr': {'class': 'form-control','placeholder':'Entrez le titre de la musique'}}) }}
+     
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+  {{ form_end(form) }}
+  </div>
+</div> 
   <div class="row">
     {% for name, artist in names %}
       <div class="col-md-4">

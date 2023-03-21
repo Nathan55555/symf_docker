@@ -7,8 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controller\\HomeController' => $baseDir . '/src/Controller/HomeController.php',
+    'App\\Controller\\RegistrationController' => $baseDir . '/src/Controller/RegistrationController.php',
+    'App\\Controller\\SecurityController' => $baseDir . '/src/Controller/SecurityController.php',
+    'App\\Controller\\UsersController' => $baseDir . '/src/Controller/UsersController.php',
+    'App\\Entity\\Users' => $baseDir . '/src/Entity/Users.php',
+    'App\\Form\\RegistrationFormType' => $baseDir . '/src/Form/RegistrationFormType.php',
     'App\\Form\\TitreType' => $baseDir . '/src/Form/TitreType.php',
+    'App\\Form\\UsersType' => $baseDir . '/src/Form/UsersType.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
+    'App\\Repository\\UsersRepository' => $baseDir . '/src/Repository/UsersRepository.php',
+    'App\\Security\\AppLoginRegisterAuthenticator' => $baseDir . '/src/Security/AppLoginRegisterAuthenticator.php',
     'Calliostro\\SpotifyWebApiBundle\\CalliostroSpotifyWebApiBundle' => $vendorDir . '/calliostro/spotify-web-api-bundle/src/CalliostroSpotifyWebApiBundle.php',
     'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\CalliostroSpotifyWebApiExtension' => $vendorDir . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/CalliostroSpotifyWebApiExtension.php',
     'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\Configuration' => $vendorDir . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/Configuration.php',

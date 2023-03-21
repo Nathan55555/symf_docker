@@ -567,8 +567,16 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
 
     public static $classMap = array (
         'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
+        'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
+        'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
+        'App\\Controller\\UsersController' => __DIR__ . '/../..' . '/src/Controller/UsersController.php',
+        'App\\Entity\\Users' => __DIR__ . '/../..' . '/src/Entity/Users.php',
+        'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Form\\TitreType' => __DIR__ . '/../..' . '/src/Form/TitreType.php',
+        'App\\Form\\UsersType' => __DIR__ . '/../..' . '/src/Form/UsersType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/src/Repository/UsersRepository.php',
+        'App\\Security\\AppLoginRegisterAuthenticator' => __DIR__ . '/../..' . '/src/Security/AppLoginRegisterAuthenticator.php',
         'Calliostro\\SpotifyWebApiBundle\\CalliostroSpotifyWebApiBundle' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/CalliostroSpotifyWebApiBundle.php',
         'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\CalliostroSpotifyWebApiExtension' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/CalliostroSpotifyWebApiExtension.php',
         'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/Configuration.php',
