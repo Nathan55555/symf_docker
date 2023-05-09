@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
+class ComposerStaticInitd4371f2425e6ec64c5de8e38c98f278c
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -103,7 +103,6 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
-            'SpotifyWebAPI\\' => 14,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
         'P' => 
@@ -143,10 +142,6 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
-        ),
-        'C' => 
-        array (
-            'Calliostro\\SpotifyWebApiBundle\\' => 31,
         ),
         'A' => 
         array (
@@ -438,10 +433,6 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
-        'SpotifyWebAPI\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src',
-        ),
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src',
@@ -551,10 +542,6 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Calliostro\\SpotifyWebApiBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src',
-        ),
         'App\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -566,24 +553,7 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
     );
 
     public static $classMap = array (
-        'App\\Controller\\AccesDeniedController' => __DIR__ . '/../..' . '/src/Controller/AccesDeniedController.php',
-        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
-        'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
-        'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
-        'App\\Controller\\UsersController' => __DIR__ . '/../..' . '/src/Controller/UsersController.php',
-        'App\\Entity\\Users' => __DIR__ . '/../..' . '/src/Entity/Users.php',
-        'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
-        'App\\Form\\TitreType' => __DIR__ . '/../..' . '/src/Form/TitreType.php',
-        'App\\Form\\UsersType' => __DIR__ . '/../..' . '/src/Form/UsersType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
-        'App\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/src/Repository/UsersRepository.php',
-        'App\\Security\\AppLoginRegisterAuthenticator' => __DIR__ . '/../..' . '/src/Security/AppLoginRegisterAuthenticator.php',
-        'Calliostro\\SpotifyWebApiBundle\\CalliostroSpotifyWebApiBundle' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/CalliostroSpotifyWebApiBundle.php',
-        'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\CalliostroSpotifyWebApiExtension' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/CalliostroSpotifyWebApiExtension.php',
-        'Calliostro\\SpotifyWebApiBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/DependencyInjection/Configuration.php',
-        'Calliostro\\SpotifyWebApiBundle\\SpotifyWebApiFactory' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/SpotifyWebApiFactory.php',
-        'Calliostro\\SpotifyWebApiBundle\\TokenProvider' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/TokenProvider.php',
-        'Calliostro\\SpotifyWebApiBundle\\TokenProviderInterface' => __DIR__ . '/..' . '/calliostro/spotify-web-api-bundle/src/TokenProviderInterface.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -1719,6 +1689,7 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         'Doctrine\\ORM\\Tools\\Pagination\\LimitSubqueryOutputWalker' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/LimitSubqueryOutputWalker.php',
         'Doctrine\\ORM\\Tools\\Pagination\\LimitSubqueryWalker' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/LimitSubqueryWalker.php',
         'Doctrine\\ORM\\Tools\\Pagination\\Paginator' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/Paginator.php',
+        'Doctrine\\ORM\\Tools\\Pagination\\RootTypeWalker' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/RootTypeWalker.php',
         'Doctrine\\ORM\\Tools\\Pagination\\RowNumberOverFunction' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/RowNumberOverFunction.php',
         'Doctrine\\ORM\\Tools\\Pagination\\WhereInWalker' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/WhereInWalker.php',
         'Doctrine\\ORM\\Tools\\ResolveTargetEntityListener' => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM/Tools/ResolveTargetEntityListener.php',
@@ -2007,6 +1978,8 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/NumberFormatter.php',
+        'PHPStan\\PhpDocParser\\Ast\\AbstractNodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/AbstractNodeVisitor.php',
+        'PHPStan\\PhpDocParser\\Ast\\Attribute' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Attribute.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayItemNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprFalseNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprFalseNode.php',
@@ -2017,8 +1990,12 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprStringNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprStringNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprTrueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprTrueNode.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstFetchNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstFetchNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\QuoteAwareConstExprStringNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/QuoteAwareConstExprStringNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Node' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Node.php',
         'PHPStan\\PhpDocParser\\Ast\\NodeAttributes' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeAttributes.php',
+        'PHPStan\\PhpDocParser\\Ast\\NodeTraverser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeTraverser.php',
+        'PHPStan\\PhpDocParser\\Ast\\NodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeVisitor.php',
+        'PHPStan\\PhpDocParser\\Ast\\NodeVisitor\\CloningVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/NodeVisitor/CloningVisitor.php',
         'PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagMethodValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagMethodValueNode.php',
         'PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagPropertyValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagPropertyValueNode.php',
         'PHPStan\\PhpDocParser\\Ast\\PhpDoc\\AssertTagValueNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/PhpDoc/AssertTagValueNode.php',
@@ -2058,7 +2035,10 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         'PHPStan\\PhpDocParser\\Ast\\Type\\GenericTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/GenericTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\IdentifierTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/IdentifierTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\IntersectionTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/IntersectionTypeNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\Type\\InvalidTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/InvalidTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\NullableTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/NullableTypeNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\Type\\ObjectShapeItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ObjectShapeItemNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\Type\\ObjectShapeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ObjectShapeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\OffsetAccessTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/OffsetAccessTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\ThisTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ThisTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\TypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/TypeNode.php',
@@ -2067,6 +2047,7 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         'PHPStan\\PhpDocParser\\Parser\\ConstExprParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/ConstExprParser.php',
         'PHPStan\\PhpDocParser\\Parser\\ParserException' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/ParserException.php',
         'PHPStan\\PhpDocParser\\Parser\\PhpDocParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/PhpDocParser.php',
+        'PHPStan\\PhpDocParser\\Parser\\StringUnescaper' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/StringUnescaper.php',
         'PHPStan\\PhpDocParser\\Parser\\TokenIterator' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TokenIterator.php',
         'PHPStan\\PhpDocParser\\Parser\\TypeParser' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Parser/TypeParser.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
@@ -2990,11 +2971,6 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
         'Sensio\\Bundle\\FrameworkExtraBundle\\Security\\ExpressionLanguage' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Security/ExpressionLanguage.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/SensioFrameworkExtraBundle.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\Templating\\TemplateGuesser' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Templating/TemplateGuesser.php',
-        'SpotifyWebAPI\\Request' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/Request.php',
-        'SpotifyWebAPI\\Session' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/Session.php',
-        'SpotifyWebAPI\\SpotifyWebAPI' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPI.php',
-        'SpotifyWebAPI\\SpotifyWebAPIAuthException' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPIAuthException.php',
-        'SpotifyWebAPI\\SpotifyWebAPIException' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPIException.php',
         'Symfony\\Bridge\\Doctrine\\CacheWarmer\\ProxyCacheWarmer' => __DIR__ . '/..' . '/symfony/doctrine-bridge/CacheWarmer/ProxyCacheWarmer.php',
         'Symfony\\Bridge\\Doctrine\\ContainerAwareEventManager' => __DIR__ . '/..' . '/symfony/doctrine-bridge/ContainerAwareEventManager.php',
         'Symfony\\Bridge\\Doctrine\\DataCollector\\DoctrineDataCollector' => __DIR__ . '/..' . '/symfony/doctrine-bridge/DataCollector/DoctrineDataCollector.php',
@@ -6225,9 +6201,9 @@ class ComposerStaticInit37a875388005ee7b9fc98da84f7a3243
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit37a875388005ee7b9fc98da84f7a3243::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit37a875388005ee7b9fc98da84f7a3243::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit37a875388005ee7b9fc98da84f7a3243::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd4371f2425e6ec64c5de8e38c98f278c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd4371f2425e6ec64c5de8e38c98f278c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd4371f2425e6ec64c5de8e38c98f278c::$classMap;
 
         }, null, ClassLoader::class);
     }

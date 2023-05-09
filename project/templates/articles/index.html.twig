@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles index{% endblock %}
+
+{% block body %}
+  
+    <h3 style="text-align:center">Articles index</h3>
+
+    <table class="table">
+        <thead>
+            <tr style="text-align:center;">
+                <th>Id</th>
+                <th>Art_label</th>
+                <th>Art_stk</th>
+               
+                <th>picture</th>
+                 <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr style="text-align:center;">
+                <td>{{ article.id }}</td>
+                <td>{{ article.artLabel }}</td>
+                <td>{{ article.artStk }}</td>
+              <td ><img style="text-align:center;" src="{{ article.artpicture }}" alt="" width="50"></td>
+                <td>
+                    <a href="{{ path('app_articles_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('app_articles_edit', {'id': article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_articles_new') }}">Create new</a>
+{% endblock %}

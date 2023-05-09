@@ -1,7 +1,4 @@
 {
-    "calliostro/spotify-web-api-bundle": {
-        "version": "v1.1.0"
-    },
     "doctrine/annotations": {
         "version": "2.0",
         "recipe": {
@@ -12,7 +9,7 @@
         }
     },
     "doctrine/doctrine-bundle": {
-        "version": "2.8",
+        "version": "2.9",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -280,6 +277,6 @@
         ]
     },
     "twig/extra-bundle": {
-        "version": "v3.5.1"
+        "version": "v3.6.0"
     }
 }

@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+{% if app.session.get('cart')|length == 0 %}
+ <div class="container">
+      <div class="container">
+
+  <div style="position: absolute; width: 400px; height: 300px; top:0; bottom:0; left:0; right: 0; margin: auto; ">
+    
+  
+    <div class="card">
+  <!-- <h5 class="card-header">Featured</h5> -->
+  <div class="card-body" style="text-align:center;">
+  <svg  xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16">
+  <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/>
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg>
+<br>
+<br>
+  <div style="text-align:center"class="alert alert-secondary" role="alert">
+  Votre panier est vide !
+</div>
+<a href="../">Continuer mes achats</a>
+  </div>
+ 
+</div>
+</div>  
+
+</div> 
+</div>
+    </div>
+{% else %}
+ <div class="container" id="test">
+    <div class="row">
+        <div style="text-align:center" class="col-8"><br><br>
+        {% for carts in cart %}
+            <div class="card">
+                 <div style="text-align:right;">
+                    <a style="color:black"; href="/panier/del/{{ carts.id }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+                        </svg>
+                    </a>
+                 </div>
+                 <div class="card-body">
+                     <div class="row">
+                        <div class="col-3">
+                            <style>img {max-height : 100%; width : 100%;}</style>
+                            <img src="{{ carts.picture }}" alt="Bootstrap" class="img-responsive">
+                        </div>
+                        <div class="col-6">       
+                            <h6 style="text-align:left">{{ carts.label }}</h6>
+                        </div>
+                        <div class="col-3">
+                        </div>
+                        <div>
+                            <input style="width:5%;" type="number" name="qtn" value="{{ carts.qtn }}" id="">
+                        </div>
+                     </div>
+                </div>
+</div>
+<br>
+{% endfor %}
+
+
+        </div>
+        <div class="col-4"><h7>Mon panier (2)</h7>
+  <br><br>
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+      <div class="card-header">
+    <div class="row">
+        <div class="col">
+            <h6>Total:</h6>
+           
+        </div>
+     
+        <div class="col">
+           <H5>0€</H5> 
+        </div>
+        <div>Hors frais de livraison</div>
+    </div>
+  </div>
+  <br>
+  <h6>Vendu par Nathan + :</h6>
+  <div class="row">
+    <div class="col-7">
+    <div>Retrait en magasin:</div>
+    <div>Frais de livraison :</div>
+    </div>
+    <div class="col-5">
+        <div style="font-weight: bold;">offert</div>
+        <div style="font-weight: bold;">offert</div>
+    </div>
+  </div>
+  
+   
+   
+  </div>
+  
+</div>
+<br>
+<a href="../php/commande_ok.php"><button style="width:80%" type="button" class="btn btn-secondary">Valider mon panier</button></a> 
+    </div>
+</div>
+{% endif %}
+{% endblock %}
