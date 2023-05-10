@@ -3,14 +3,19 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
- <header class="bg-dark py-5">
-            {# <div class="container px-4 px-lg-5 my-5"> #}
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">OrtMarket</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Bienvenue sur la plateforme de commande de snacks pour les élèves</p>
-                </div>
-            </div>
-        </header>
+{% for message in error2 %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
+<header style="background-color: #001489; color: #FFFFFF" class="py-2">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center">
+            <h1 class="display-4 fw-bolder">OrtMarket</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Bienvenue sur la plateforme de commande de snacks pour les élèves</p>
+        </div>
+    </div>
+</header>
+
+
 <section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
