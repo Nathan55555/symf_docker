@@ -23,17 +23,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/" style="color: #FFFFFF;">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!" style="color: #FFFFFF;">Login</a></li>
-                <li class="nav-item dropdown">
+                    {% if app.user %}
+                <li class="nav-item"><a class="nav-link" href="/logout" style="color: #FFFFFF;">logout</a></li>
+                 {% else %}
+                <li class="nav-item"><a class="nav-link" href="/login" style="color: #FFFFFF;">Login</a></li>
+                {% endif %}
+              
+                  {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF;">Shop</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/categories">All Products</a></li>
+                        <li><a class="dropdown-item" href="/a/categories">Catégories</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="/articles">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        <li><a class="dropdown-item" href="/a/articles">Articles</a></li>
+                        <li><a class="dropdown-item" href="#!">New Arrivals</aP></li>
                     </ul>
                 </li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/user" style="color: #FFFFFF;">Users</a></li>
+          {% endif %}
             </ul>
+          
             <a href="/panier">
                 <button class="btn btn-outline-light" type="submit">
                     <i class="bi-cart-fill me-1" style="color: #FFFFFF;"></i>

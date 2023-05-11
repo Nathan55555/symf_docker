@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail Commande{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br><br><br>
+    <div class="container">
+    <div class="card" style="text-align:center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Commande N°: {{ id }}</h5>
+    <br>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id_produit</th>
+      <th scope="col">image</th>
+      <th scope="col">quantité</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+  {% for ord in orderlist %}
+        <tr>
+      <th scope="row">{{ ord.article_id }}</th>
+      <td style="text-align: center;">
+  <img src="{{ ord.articles_photo }}" alt="" style="max-width: 100px; max-height: 100px;">
+</td>
+
+      <td>{{ ord.article_quantity }}</td>
+     
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+    <a href="#" class="btn btn-primary">Revenir à mes achats</a>
+  </div>
+</div>
+    </div>
+</div>
+
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Entity\OrderDetail;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -55,6 +56,46 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         $this->save($user, true);
     }
+
+   public function countOrdersByUser()
+{
+    $users = $this->createQueryBuilder('u')
+        ->select('u.username')
+        ->addSelect('COUNT(od.id) as orders_count')
+        ->leftJoin('u.orderDetails', 'od')
+        ->groupBy('u.id')
+        ->getQuery()
+        ->getResult();
+
+    $ordersByUser = [];
+
+    foreach ($users as $user) {
+        $ordersByUser[$user['username']] = (int) $user['orders_count'];
+    }
+
+    // Add users with no orders
+    $usersWithNoOrders = array_diff($this->findAll(), array_column($users, 'username'));
+
+    foreach ($usersWithNoOrders as $user) {
+        $ordersByUser[$user->getUsername()] = 0;
+    }
+
+    return $ordersByUser;
+}
+public function viewFileInfo()
+{
+    $entityManager = $this->getEntityManager()->getConnection();
+
+    $query = 'SELECT u.*, COUNT(o.user_id_id) AS num_orders FROM user u LEFT JOIN commande o ON u.id = o.user_id_id GROUP BY u.id;';
+    $stmt = $entityManager->prepare($query);
+    $rest = $stmt->executeQuery();
+
+    return $rest->fetchAllAssociative();
+}
+
+    
+    
+
 
 //    /**
 //     * @return User[] Returns an array of User objects

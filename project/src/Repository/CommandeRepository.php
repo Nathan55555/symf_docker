@@ -39,20 +39,34 @@ class CommandeRepository extends ServiceEntityRepository
         }
     }
 
+    public function findCommandesByUser(int $userId): array
+{
+  
+        $entityManager = $this->getEntityManager()->getConnection();
+    
+        $query = 'SELECT * FROM commande WHERE user_id_id = '.$userId;
+        $stmt = $entityManager->prepare($query);
+        $rest = $stmt->executeQuery();
+    
+        return $rest->fetchAllAssociative();
+    
+    
+}
+
 //    /**
 //     * @return Commande[] Returns an array of Commande objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function findByExampleField($value): array
+   {
+       return $this->createQueryBuilder('c')
+           ->andWhere('c.user_id_is = :val')
+           ->setParameter('val', $value)
+           ->orderBy('c.id', 'ASC')
+           ->setMaxResults(100)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Commande
 //    {

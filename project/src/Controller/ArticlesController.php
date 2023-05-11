@@ -9,8 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 
-#[Route('/articles')]
+
+#[Route('/a/articles')]
 class ArticlesController extends AbstractController
 {
     #[Route('/', name: 'app_articles_index', methods: ['GET'])]
@@ -66,7 +70,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_articles_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_articles_delete')]
     public function delete(Request $request, Articles $article, ArticlesRepository $articlesRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
@@ -75,4 +79,5 @@ class ArticlesController extends AbstractController
 
         return $this->redirectToRoute('app_articles_index', [], Response::HTTP_SEE_OTHER);
     }
+  
 }

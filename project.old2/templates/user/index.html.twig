@@ -1,0 +1,25 @@
+<div class="container">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Action</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+  {% for users in user %}
+    <tr>
+      <th scope="row">{{ user.email }}</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    {% endfor %}
+  
+  </tbody>
+</table>
+
+</div>

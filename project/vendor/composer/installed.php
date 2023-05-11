@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
-        'name' => 'symfony/website-skeleton',
-        'pretty_version' => 'v6.1.99',
-        'version' => '6.1.99.0',
+        'name' => '__root__',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -10,6 +10,15 @@
         'dev' => true,
     ),
     'versions' => array(
+        '__root__' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'doctrine/annotations' => array(
             'pretty_version' => '2.0.1',
             'version' => '2.0.1.0',
@@ -1216,15 +1225,6 @@
             'install_path' => __DIR__ . '/../symfony/web-profiler-bundle',
             'aliases' => array(),
             'dev_requirement' => true,
-        ),
-        'symfony/website-skeleton' => array(
-            'pretty_version' => 'v6.1.99',
-            'version' => '6.1.99.0',
-            'reference' => NULL,
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'symfony/yaml' => array(
             'pretty_version' => 'v6.1.11',

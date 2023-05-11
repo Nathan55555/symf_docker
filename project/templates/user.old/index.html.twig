@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container">
+<br>
+<h3 style="text-align:center" >Users</h3>
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+       <th scope="col">Nb Commande</th>
+      <th scope="col">Action</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+ 
+  {% for user in users %}
+    <tr>
+      <th scope="row">{{ user.email }}</th>
+      <td>{{ user.roles[0]}}</td>
+      <td>{{user.numorders}}</td>
+      <td>Otto</td>
+      
+    </tr>
+    {% endfor %}
+  
+  </tbody>
+</table>
+
+</div>
+{% endblock %}  

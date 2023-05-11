@@ -1,35 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Categories index{% endblock %}
+   
 
 {% block body %}
-    <h1>Categories index</h1>
+    <div class="container">
+        <h1>Categories index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Categ_label</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.categLabel }}</td>
-                <td>
-                    <a href="{{ path('app_categories_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_categories_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Categ_label</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.categLabel }}</td>
+                    <td>
+                        <a href="{{ path('app_categories_show', {'id': category.id}) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ path('app_categories_edit', {'id': category.id}) }}" class="btn btn-secondary">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_categories_new') }}">Create new</a>
+        <a href="{{ path('app_categories_new') }}" class="btn btn-success">Create new</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

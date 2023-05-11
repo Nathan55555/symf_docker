@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CommandeRepository;
+use App\Repository\ArticlesRepository;
 use App\Repository\OrderDetailRepository;
 use App\Entity\Commande;
 use App\Entity\OrderDetail;
@@ -45,9 +46,7 @@ class CommandeController extends AbstractController
                     $ord = $order->setOrdQtn($item['qtn']);
                     $orderrepo->save($ord,true);
                 }
-                
                 $orderDetails = array();
-
                 foreach ($cart as $item) {
                     $orderDetail = array(
                         'commande_id' => $lastCommande->getId(),
@@ -57,14 +56,55 @@ class CommandeController extends AbstractController
                     );
                     array_push($orderDetails, $orderDetail);
                 }
-
-
                 $cart = $req->getSession()->set('cart', []);
                 return $this->render('commande/index.html.twig', [
                     'order' => $orderDetails,
                 ]);
             
     }
-    
-    
+
+    #[Route('/commande/u/{id}', name: 'app_commande_liste')]
+    public function order_user(OrderDetailRepository $orderrepo, CommandeRepository $comrepo,UserRepository $userRepository,$id): Response
+    {
+      return $this->render('commande/liste.html.twig', [
+        'orderlist' => $comrepo->findCommandesByUser($id),
+    ]);
 }
+
+    #[Route('/commande/detail/{id}', name: 'app_commande_users')]
+     public function order_detail_user(ArticlesRepository $artrepo,CommandeRepository $comrepo, OrderDetailRepository $orderrep ,$id): Response
+    {
+       $order =  $orderrep->findByExampleField($id) ;
+       $arrayorder = [];
+       $orderDetails = [];
+       foreach ($order as $o) {
+            $id = $o->getIdart(); 
+            $art = $artrepo->find($id);
+            $arrayorder = array(
+                'order_id' => $o->getId(),
+                'article_id' => $art->getId(),
+                'article_name' => $art->getArtLabel(),
+                'article_quantity' => $o->getOrdQtn(),
+                'articles_photo' => $art->getArtPicture(),);
+                array_push($orderDetails, $arrayorder);
+                // Ajouter d'autres détails de la commande ici
+            
+           
+
+       
+    }
+   
+       
+      
+        return $this->render('commande/detail.html.twig', [
+            'orderlist' => $orderDetails,
+            'id' => $id,
+        ]);
+
+    }
+
+
+
+    }
+    
+

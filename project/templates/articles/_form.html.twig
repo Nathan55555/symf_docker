@@ -1,8 +1,29 @@
-{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{# {% form_theme form 'bootstrap_5_layout.html.twig' %}
 <div class="container">
 
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+  
 {{ form_end(form) }}
+</div> #}  <button class="btn">{{ button_label|default('Save') }}</button>
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_start(form) }}
+            {{ form_row(form.categ_id) }}
+            {{ form_row(form.art_picture) }}
+                        <button class="btn  btn-primary ">{{ button_label|default('Save') }}</button>
+
+        
+        </div>
+        <div class="col-md-6">
+
+            {{ form_row(form.art_label) }}
+            {{ form_row(form.art_stk) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
 </div>
